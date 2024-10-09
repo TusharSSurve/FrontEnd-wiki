@@ -5,7 +5,8 @@ const config = {
   },
   darkMode: true,
   footer: {
-    content: '2024 © Tushar Surve',
+    content: "© Copyright by TusharSurve.",
+    text: "© Copyright by TusharSurve.",
   },
   editLink: {
     component: null
