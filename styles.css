@@ -1,3 +1,12 @@
 kbd {
   display: none !important;
 }
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
