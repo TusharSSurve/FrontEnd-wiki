@@ -10,3 +10,11 @@ pre {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+details>div {
+  padding: 1rem
+}
+
+details ul {
+  margin-right: 1.5rem
+}

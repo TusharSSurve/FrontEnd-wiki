@@ -1,4 +1,12 @@
 export default {
-  "index": 'Introduction',
-  "advanced": "Advanced (A Folder)",
+  "index": {
+    title: 'Introduction',
+    navigation: true
+  },
+  "html": "HTML",
+  "css": "CSS",
+  "javascript": "JavaScript",
+  "react": "React",
+  "advanced": "Advanced",
+  "company-wise": "Company Wise",
 }

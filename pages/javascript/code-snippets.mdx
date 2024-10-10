@@ -1,0 +1,65 @@
+import Head from "next/head";
+
+<Head>
+  <title>Code Snippets | JavaScript | Frontend.wiki</title>
+</Head>
+
+# Code Snippets
+
+---
+
+#### 1. What's the output? ⭐
+
+```javascript
+function sayHi() {
+  console.log(name);
+  console.log(age);
+  var name = "Tushar";
+  let age = 26;
+}
+
+sayHi();
+```
+
+<details>
+  <summary>
+    **Answer**
+  </summary>
+  **`undefined` and `ReferenceError`**
+  
+  Within the function, the name variable is declared using the var keyword,
+  meaning it gets hoisted but is initially set to undefined until it’s
+  explicitly assigned a value. When we attempt to log name before it’s defined,
+  it still holds undefined. On the other hand, variables declared with let or
+  const are also hoisted, but unlike var, they aren't initialized. They remain
+  inaccessible until the actual declaration line, which is known as the
+  **"temporal dead zone."** Trying to access them before this point results in a
+  ReferenceError.
+</details>
+
+---
+
+#### 2. What's the output? ⭐
+
+```javascript
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1);
+}
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1);
+}
+```
+
+<details>
+  <summary><b>Answer</b></summary>
+  
+  **`3 3 3` and `0 1 2`**
+  
+  Due to JavaScript's event queue, the setTimeout callback function is executed after the loop completes. In the first loop, the variable i is declared with var, making it global. As the loop runs, i is incremented by 1 with the ++ operator. By the time the setTimeout function is triggered, i has reached the value of 3.
+
+In the second loop, i is declared with let, which is block-scoped (within { }). This means that during each iteration, i gets a new value that's confined to that specific loop cycle, ensuring the correct value is preserved for each callback.
+
+</details>
+
+---

@@ -1,0 +1,68 @@
+import Head from "next/head";
+
+<Head>
+  <title>JavaScript | Frontend.wiki</title>
+</Head>
+
+# JavaScript Basic Questions
+
+---
+
+#### 1. What are the different data types present in javascript? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  JavaScript provides various data types to work. These can be broadly classified into **Primitive** and **Non-Primitive** types.
+
+**Primitive** types are immutable and stored directly in the stack.
+
+- **String**: Represents textual data (a sequence of characters).
+  ```js
+  let name = "John";
+  ```
+- **Number**: Represents both integer and floating-point numbers.
+  ```js
+  let age = 25;
+  let score = 99.5;
+  ```
+- **Boolean**: Represents a logical value: `true` or `false`.
+  ```js
+  let isLoggedIn = true;
+  ```
+- **Undefined**: A variable that has been declared but not yet assigned a value.
+  ```js
+  let x;
+  console.log(x); // undefined
+  ```
+- **Null**: Represents an explicitly empty or non-existent value.
+
+  ```js
+  let emptyValue = null;
+  ```
+
+- **Symbol**: A unique and immutable value, typically used as object keys.
+
+  ```js
+  let uniqueKey = Symbol("key");
+  ```
+
+**Non-Primitive** types are mutable
+
+- **Object**: Used to store collections of data and more complex entities.
+
+  ```js
+  let person = {
+    name: "John",
+    age: 30,
+  };
+  ```
+
+- **Array**: A special type of object used for storing ordered collections of values.
+
+  ```js
+  let fruits = ["Apple", "Banana", "Cherry"];
+  ```
+
+</details>
