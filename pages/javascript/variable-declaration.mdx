@@ -1,0 +1,54 @@
+import Head from "next/head";
+
+<Head>
+  <title>Variable Declaration | Frontend.wiki</title>
+</Head>
+
+# Variable Declaration Questions
+
+---
+
+#### 1. What is the purpose of the `let` keyword? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The `let` keyword in JavaScript declares block-scoped variables, meaning they are only accessible within the block they are defined. Unlike `var`, `let` does not allow re-declaration in the same block and prevents the use of uninitialized variables. Variables declared with `let` are hoisted but cannot be accessed until their declaration is reached, which prevents the use of uninitialized variables.
+
+    ```javascript
+    let value = 20;
+    if (value) {
+      let value = 31;
+      console.log(value); // 31
+    }
+    console.log(value); // 20
+    ```
+</details>
+
+#### 2. What is the difference between `let` and `var`? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Here's a more detailed comparison of `let` and `var`:
+    | var                                                            | let                                           |
+    | -------------------------------------------------------------- | --------------------------------------------- |
+    | Available since the beginning of JavaScript         | Introduced as part of ES6                     |
+    | It has function level scope                                    | It has block level scope                      |
+    | Variable declaration will be hoisted, initialized as undefined | Variable declaration will be hoisted but not initialized                   |
+    | It is possible to re-declare the variable in same scope    | It is not possible to re-declare the variable in same scope |
+
+  Let's take an example to see the difference:
+
+    ```javascript
+    function sayHi() {
+      console.log(name); // undefined
+      console.log(age); // ReferenceError: Cannot access 'age' before initialization
+      var name = "Tushar";
+      let age = 26;
+    }
+    sayHi();
+    ```
+</details>

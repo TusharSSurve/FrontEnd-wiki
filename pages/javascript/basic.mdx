@@ -8,6 +8,8 @@ import Head from "next/head";
 
 ---
 
+JavaScript is key to building dynamic web applications. This section covers essential topics like variables, data types, operators, control structures, functions, and objects. Mastering these basics is crucial for tackling real-world problems and acing interviews, providing a strong foundation for more advanced concepts.
+
 #### 1. What are the different data types present in javascript? ⭐
 
 <details>
@@ -41,14 +43,13 @@ import Head from "next/head";
   ```js
   let emptyValue = null;
   ```
-
 - **Symbol**: A unique and immutable value, typically used as object keys.
 
   ```js
   let uniqueKey = Symbol("key");
   ```
 
-**Non-Primitive** types are mutable
+**Non-Primitive** types are mutable and stored in the heap.
 
 - **Object**: Used to store collections of data and more complex entities.
 
@@ -58,7 +59,6 @@ import Head from "next/head";
     age: 30,
   };
   ```
-
 - **Array**: A special type of object used for storing ordered collections of values.
 
   ```js
@@ -66,3 +66,63 @@ import Head from "next/head";
   ```
 
 </details>
+
+
+#### 2. What is `typeof` operator?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The `typeof` operator in JavaScript is used to determine the type of a value or variable. It returns a string indicating the data type of the operand.
+  ```javascript
+    typeof "Tushar Surve"; // Returns "string"
+    typeof 2; // Returns "number"
+    typeof [1, 2, 3]; // Returns "object" because all arrays are also objects
+    typeof typeof 2; // Returns "string" because the expression typeof 2 returns "number" (string), and applying typeof to that string returns "string"
+    ```
+</details>
+
+#### 3. What is `undefined`?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The `undefined` property indicates that a variable has been declared but not initialized yet. The type of undefined is undefined too.
+
+    ```javascript
+    var user;
+    console.log(typeof user); //undefined
+    ```
+</details>
+
+#### 4. What is `null` value?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The value null represents the intentional absence of any object value. It is one of JavaScript's primitive values. The type of null value is object.
+
+    ```javascript
+    var user = null;
+    console.log(typeof user); //object
+    ```
+</details>
+
+#### 5. What is the difference between `null` and `undefined`?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+Below are the main differences between null and undefined,
+
+    | Null                                                                                            | Undefined                                                                                               |
+    | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+    | It is an assignment value which indicates that variable points to no object.                    | Represents a variable that has been declared but not assigned a value |
+    | Type of null is object                                                                          | Type of undefined is undefined                                                                          |
+    | The null value is a primitive value that represents the null, empty, or non-existent reference. | The undefined value is a primitive value used when a variable has not been initialized or a function has no return value.            |
+</details>
+---
