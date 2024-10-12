@@ -5,3 +5,242 @@ import Head from "next/head";
 </Head>
 
 # React Questions
+
+---
+
+#### 1. What is React?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  React is a JavaScript library used for building fast and interactive user interfaces. It focuses on creating reusable components and updates the UI efficiently using a virtual DOM, ensuring only the necessary parts of the page are re-rendered. This makes React ideal for building dynamic single-page applications.
+</details>
+
+#### 2. What are the major features of React? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Here are the major features of React:
+
+  - **Component-based architecture**: UI is divided into reusable components.
+  - **Virtual DOM**: Efficiently updates only parts of the UI that change, improving performance.
+  - **JSX (JavaScript XML)**: A syntax extension that allows HTML with JavaScript.
+  - **Unidirectional or One-way data flow**: Data flows from parent to child components.
+  - **Server-side rendering**: which is useful for Search Engine Optimizations(SEO).
+</details>
+
+#### 3. What is JSX? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  __JSX (JavaScript XML)__ is a syntax extension for JavaScript used in React to describe the UI structure. It looks similar to HTML but is written within JavaScript. JSX allows you to write elements and components in a more intuitive way by mixing HTML-like syntax with JavaScript logic. Nowadays, we're also using __TSX (TypeScript XML)__, which is a TypeScript extension of JSX, used for adding type safety to React components, making code more robust and reducing errors by leveraging TypeScript's static typing system.
+
+  For example, this JSX code:
+  ```javascript
+  const element = <h1>Hello, world!</h1>;
+  ```
+  is transpiled into regular JavaScript code like:
+  ```javascript
+  const element = React.createElement('h1', null, 'Hello, world!');
+  ```
+  **Note:** JSX is stricter than HTML.
+</details>
+
+#### 4. How to create components in React? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  In React, components can be created as functional or class components. Here's how to create both types:
+  1. **Function Components:** A functional component is a JavaScript function that returns JSX.
+  ```jsx
+  function Welcome() {
+    return <h1>Hello, World!</h1>;
+  }
+  ```
+  2. **Class Components:** A class component is an ES6 class that extends React.Component and has a render() method returning JSX.
+  ```jsx
+  class Welcome extends React.Component {
+    render() {
+      return <h1>Hello, World!</h1>;
+    }
+  }
+  ```
+  **Note:** Since the introduction of Hooks in React 16.8, functional components have become the preferred approach for building components, offering a simpler and more concise alternative to class components.
+</details>
+
+#### 5. When to use a Class Component over a Function Component?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Class components are now rarely used in modern React development due to the introduction of hooks, which provide all the functionality previously exclusive to class components.
+  - **Legacy codebases**: Class components are still used in older projects built before React 16.8.
+  - **Third-party libraries**: Some older libraries may still expect class components.
+  - **Familiarity**: Teams or developers accustomed to class components may continue using them, though it's rare. 
+
+  Function components with hooks are preferred in modern React development.
+</details>
+
+#### 6. What is state in React? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  In React, **state** refers to an object that holds dynamic data for a component, that may change over the lifetime of the component. Also, whenever the state changes, the component re-renders.
+  
+  Example:
+  ```jsx
+  import React, { useState } from 'react';
+
+  function Counter() {
+    const [count, setCount] = useState(0); // Declare state variable
+
+    return (
+      <div>
+        <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count + 1)}>Click me</button>
+      </div>
+    );
+  }
+  ```
+  **Note:** We use the `useState` hook in functional components to manage state.
+</details>
+
+#### 7. What are props in React? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  In React, **props** (short for properties) are a way to pass data from one component to another i.e., from a parent component to a child component. Props are read-only, meaning a component cannot modify its own props.
+
+  Example:
+  ```jsx
+  function ChildComponent({name}) {
+    return <h1>Hello, {name}!</h1>;
+  }
+
+  function ParentComponent() {
+    return <ChildComponent name="Tushar" />;
+  }
+  ```
+  In this example, the <em>ChildComponent</em> component receives the name prop from the <em>ParentComponent</em> component and displays it, resulting in the output "Hello, Tushar!".
+</details>
+
+#### 8. What is the difference between state and props? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Differences between state and props:
+  | State | Props |
+  | -------------------------------------------- | -------------------------------------------- |
+  | An object that holds data managed within a component. | Data passed from a parent component to a child. |
+  | Mutable; can be changed using `setState`. | Immutable; cannot be modified by the child component. |
+</details>
+
+#### 9. What is Lifting State Up in React?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  **Lifting State Up** in React refers to the practice of moving state management from a child component to a common parent component. This approach allows multiple child components to share the same state.
+</details>
+
+#### 10. What is children prop?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The **children prop** in React is a special prop that allows components to pass and render nested elements or components.
+
+  Example:
+  ```jsx
+  function MaxWidthWrapper({ children }) {
+    return <div className="mx-auto w-full max-w-screen-xl px-2.5 md:px-20">{children}</div>;
+  }
+
+  function App() {
+    return (
+      <MaxWidthWrapper>
+        <h1>Hello, World!</h1>
+        <p>This is a child element.</p>
+      </MaxWidthWrapper>
+    );
+  }
+  ```
+  In this example, the `MaxWidthWrapper` component receives `children` as a prop, allowing it to render any elements nested within it. In the `App` component, the `h1` and `p` elements are passed as children to the `MaxWidthWrapper`.
+</details>
+
+#### 11. Why React uses `className` over `class` attribute?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  React uses `className` instead of the `class` attribute to avoid conflicts with the JavaScript `class` keyword. Since `class` is a reserved keyword in JavaScript for defining classes, React uses `className` to specify CSS classes in JSX.
+</details>
+
+#### 12. What are React fragments? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  **Fragments** in React are a feature that allows you to group multiple elements without adding an extra node to the DOM. It can help maintain the desired structure of the HTML.
+
+  Example:
+
+  ```jsx
+  import React from 'react';
+
+  function MyComponent() {
+    return (
+      <React.Fragment>
+        <h1>Title</h1>
+        <p>This is a paragraph.</p>
+      </React.Fragment>
+    );
+  }
+  ```
+
+  You can also use the shorthand syntax with empty tags:
+
+  ```jsx
+  function MyComponent() {
+    return (
+      <>
+        <h1>Title</h1>
+        <p>This is a paragraph.</p>
+      </>
+    );
+  }
+  ```
+
+  In both examples, `MyComponent` returns multiple elements without adding an additional wrapper element to the DOM.
+</details>
+
+#### 13. Why fragments are better than container divs?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Fragments are better than container `<div>`s in React for several reasons:
+
+  - **Avoid extra DOM nodes**: Fragments don’t add unnecessary elements to the DOM, keeping the structure clean.
+  - **Improved performance**: Fewer DOM nodes can lead to better rendering performance.
+  - **Better styling and layout**: No unwanted `<div>`s that could disrupt CSS or affect layout.
+</details>
