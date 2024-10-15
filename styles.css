@@ -18,3 +18,7 @@ details>div {
 details ul {
   margin-right: 1.5rem
 }
+
+details ul li ul {
+  margin-top: 0 !important;
+}

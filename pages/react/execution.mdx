@@ -1,0 +1,69 @@
+import Head from "next/head";
+
+<Head>
+  <title>Execution | Frontend.wiki</title>
+</Head>
+
+# React Execution Related Questions
+
+---
+
+#### 1. What is Virtual DOM? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The virtual DOM is a lightweight, in-memory representation of the real DOM used by React. It enables faster updates by only re-rendering elements that change, rather than updating the entire DOM. When a component's state or props change, React updates the virtual DOM, compares it with the previous version (a process called "reconciliation"), and efficiently updates only the necessary parts of the actual DOM. This improves performance in web applications.
+</details>
+
+#### 2. How Virtual DOM actually works? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Here’s how the Virtual DOM works:
+
+  1. **Component Rendering**: When a React component's state or props change, the component re-renders, creating a new virtual DOM tree.
+
+  2. **Virtual DOM Comparison**: React compares the new virtual DOM with the previous one using a process called "diffing." This identifies the differences.
+
+  3. **Minimal DOM Updates**: Based on the differences, React updates only the parts of the actual DOM that changed, minimizing expensive real DOM manipulations. React then batches DOM updates to optimize performance.
+</details>
+
+#### 3. What is Reconciliation? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  **Reconciliation** is the process in React where the framework compares the current virtual DOM with the new virtual DOM to determine what has changed. It identifies differences (or "diffs") and efficiently updates the actual DOM to reflect those changes. 
+
+  Reconciliation and the virtual DOM are related but not the same; the virtual DOM serves as a lightweight representation of the real DOM, while reconciliation is the algorithm that manages the updates based on comparisons between the virtual DOM snapshots.
+</details>
+
+#### 4. What is React Fiber?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  **React Fiber** is a complete reimplementation of the React reconciliation algorithm. 
+  - **Key Features**:
+    - **Concurrent Rendering**: Fiber allows React to break tasks into smaller units that can be paused and resumed, enabling smoother UIs for complex apps.
+    - **Scheduling**: Tasks are prioritized based on urgency, which boosts performance during heavy workloads by rendering the most important elements first.
+    - **Error Boundaries**: Fiber introduced the concept of error boundaries, which can catch errors during rendering and display fallback UIs.
+  - **Latest Updates**:
+    - **Concurrent Features**: Improved support for time slicing and the ability to handle multiple priorities at once.
+    - **React Compiler**: Now open-source, it allows for additional optimizations during the build process, leveraging Fiber's work-splitting capabilities.
+</details>
+
+#### 5. What is React Compiler?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The **React Compiler** is a new experimental compiler expected to be a key feature in React 19, represents a significant leap forward in optimizing React applications. The compiler is designed to automatically handle optimizations that previously required manual memoization techniques, such as using `useMemo()`, `useCallback()`, and `React.memo()`. This promises to reduce the complexity and potential errors associated with manual performance optimizations.
+</details>
