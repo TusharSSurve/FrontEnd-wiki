@@ -1,7 +1,42 @@
 import Head from "next/head";
 
 <Head>
-  <title>Memoization | Frontend.wiki</title>
+  <title>Closures | Frontend.wiki</title>
 </Head>
 
-# Memoization Questions
+# Closures Questions
+
+---
+
+#### 1. What are Closures? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Closures in JavaScript are a fundamental concept that allows a function to "remembers" it's surrounding lexical variables, even when the function is executed outside that scope. In simpler terms, a closure is created when an inner function is defined within an outer function, enabling the inner function to access variables and parameters of the outer function even after the outer function has finished executing.
+
+  **Example of Closures:**
+
+  ```javascript
+  function outerFunction() {
+      let outerVariable = 'I am outside!';
+
+      function innerFunction() {
+          console.log(outerVariable); // Accessing the outer variable
+      }
+
+      return innerFunction; // Returning the inner function
+  }
+
+  const closureFunction = outerFunction(); // outerFunction is executed, returning innerFunction
+  closureFunction(); // Output: I am outside!
+  ```
+
+  **Practical Uses of Closures:**
+
+  - **Data Privacy**: Keeping certain data private from the global scope.
+  - **Partial Application**: Creating functions with preset arguments.
+  - **Event Handlers**: Maintaining state in asynchronous callbacks.
+  - Can be used to implement **Memoization**
+</details>

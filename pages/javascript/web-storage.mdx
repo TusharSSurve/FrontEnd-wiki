@@ -8,14 +8,100 @@ import Head from "next/head";
 
 ---
 
+This section focuses on web storage topics in JavaScript, including questions related to `cookies`, `localStorage`, and `sessionStorage`.
+
 #### 1. What is Web Storage? ⭐
 
 <details>
   <summary>
     <strong>Answer</strong>
   </summary>
-**Web storage** is an API by which browsers can store some data locally within the user's browser. The web storage provides two mechanisms for storing data on the client.
+  **Web storage** is an API by which browsers can store some data locally within the user's browser. The web storage provides two mechanisms for storing data on the client.
 
     1. **Local storage**: It stores data for current origin with no expiration date.
     2. **Session storage**: It stores data for one session and the data is lost whenever the browser tab is closed.
+</details>
+
+#### 2. What is a `Cookie`?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  A cookie is a piece of data stored on a user's device by a website, used to remember information like login status or preferences across sessions. Cookies are saved as key/value pairs.
+  
+  For example, you can create a cookie named username as below,
+
+    ```javascript
+    document.cookie = "username=TusharSurve";
+    ```
+</details>
+
+#### 3. Why do you need a `Cookie`?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Cookies are needed to store user-specific information, such as login sessions, preferences, and shopping cart items. They help websites provide a personalized experience and maintain continuity across visits.
+</details>
+
+#### 4. How do you delete a `Cookie`?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  To delete a cookie, you can set its `expires` or `max-age` option to a past date or `0`, respectively, using the same name, domain, and path. For example:
+
+  ```javascript
+  document.cookie = "cookieName=; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/;";
+  ```
+</details>
+
+#### 5. What are the differences between `cookie`, `localStorage` and `sessionStorage`? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Comparison of **Cookie**, **Local Storage**, and **Session Storage**:
+
+  | Feature                 | Cookie                              | Local Storage                       | Session Storage                     |
+  |-------------------------|-------------------------------------|-------------------------------------|-------------------------------------|
+  | **Data Storage Limit**   | 4 KB                               | up to 5 MB                             | up to 5 MB                             |
+  | **Expiration**           | Manually set (can expire)           | No expiration (until manually deleted) | Automatically cleared when the tab or browser is closed |
+  | **Storage Scope**        | Sent with every HTTP request (if not set as `HttpOnly`) | Only accessible via client-side scripts | Only accessible via client-side scripts |
+  | **Accessibility**        | Server and client (if `HttpOnly` is not set) | Client-side only                   | Client-side only                   |
+  | **Security**             | Can be made secure using `Secure` and `HttpOnly` flags | Less secure (accessible by JavaScript) | Less secure (accessible by JavaScript) |
+  | **Use Case**             | Session tracking, authentication    | Long-term storage (user settings)   | Temporary session data             |
+</details>
+
+#### 6. What are the methods available on `localStorage`?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The LocalStorage provided methods for reading, writing and clearing the session data
+
+  - **`setItem(key, value)`**: Stores a key-value pair.
+    ```javascript
+    localStorage.setItem('name', 'Tushar');
+    ```
+
+  - **`getItem(key)`**: Retrieves the value for the specified key.
+    ```javascript
+    const name = localStorage.getItem('name');
+    ```
+
+  - **`removeItem(key)`**: Removes the specified key and its value.
+    ```javascript
+    localStorage.removeItem('name');
+    ```
+
+  - **`clear()`**: Removes all key-value pairs from `localStorage`.
+    ```javascript
+    localStorage.clear();
+    ```
 </details>
