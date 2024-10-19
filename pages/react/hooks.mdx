@@ -5,3 +5,119 @@ import Head from "next/head";
 </Head>
 
 # Hooks Questions
+
+---
+
+React Hooks are functions that allow you to use React's state and lifecycle features inside functional components, without needing to convert them to class components. Hooks were introduced in React 16.8.
+
+#### 1. What rules need to be followed for hooks?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  When using React Hooks, please ensure:
+  - **Hooks** should be called at the top level of function component, not inside loops, conditions, or nested functions. 
+  - **Hooks** can only be called inside React function components or custom Hooks. They cannot be used inside regular JavaScript functions.
+</details>
+
+#### 2. What is the `useState` hook, and how does it work? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The `useState` hook is a React function that allows you to add and manage state in functional components. It initializes a state variable and provides a function to update that state.
+
+  **How it works:**
+
+  1. **Initialization**: When you call `useState`, you pass an initial value as an argument. This value becomes the initial state.
+    
+    ```jsx
+    const [count, setCount] = useState(0);
+    ```
+
+    Here, `count` is the current state, and `setCount` is used to update the state.
+
+  2. **Updating state**: To update the state, you call the setState with the new value.
+
+    ```jsx
+    setCount(prev=> prev + 1);
+    ```
+
+    This triggers a re-render of the component with the updated state.
+</details>
+
+#### 3. What are the benefits of using multiple `useState` hooks vs a single state object?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Using multiple `useState` hooks allows for independent state updates, leading to cleaner code and simpler logic. Each state variable has its own updater function, avoiding unnecessary re-renders that can occur when updating a single state object. This approach also simplifies managing different types of state.
+</details>
+
+#### 4. What is the `useEffect` hook, and how does the dependency array affect its behavior? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The `useEffect` hook allows to perform side effects in functional components. Side effects can include data fetching, subscriptions, or manually changing the DOM. The `useEffect` hook runs after the component renders, making it ideal for handling these tasks.
+
+  **Basic Usage**
+
+  You use `useEffect` by passing it a function and an optional dependency array:
+
+  ```javascript
+  useEffect(() => {
+    // Your side effect logic here
+  }, [dependencies]);
+  ```
+
+  **Dependency Array**
+
+  The dependency array controls when the effect runs. Its behavior can be summarized as follows:
+
+  1. **No Dependency Array**: 
+    If you omit the dependency array, the effect runs after every render of the component.
+
+    ```javascript
+    useEffect(() => {
+      console.log('Effect ran');
+    });
+    ```
+
+  2. **Empty Dependency Array**: 
+    If you pass an empty array (`[]`), the effect runs only once after the initial render, similar to `componentDidMount`.
+
+    ```javascript
+    useEffect(() => {
+      console.log('Effect ran once');
+    }, []);
+    ```
+
+  3. **With Dependencies**: 
+    If you include specific dependencies in the array, the effect will run only when any of those dependencies change.
+
+    ```javascript
+    useEffect(() => {
+      console.log(`Effect ran because count changed to ${count}`);
+    }, [count]);
+    ```
+
+  **Cleanup Function**
+
+  React will call a cleanup function from the effect before the component unmounts or before the effect runs again. This is useful for cleaning up subscriptions or timers.
+
+  ```javascript
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('Timer executed');
+    }, 1000);
+
+    return () => clearTimeout(timer); // Cleanup
+  }, []);
+  ```
+</details>
+---

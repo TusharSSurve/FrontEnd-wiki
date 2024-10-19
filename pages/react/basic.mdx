@@ -262,17 +262,93 @@ import Head from "next/head";
   </summary>
   Here are the advantages and disadvantages of React:
 
-  ### Advantages
+  **Advantages**
+
   - **Component-Based Architecture**: Encourages reusable and modular code, making development more organized and manageable.
   - **Virtual DOM**: Enhances performance by minimizing direct DOM manipulation and optimizing updates.
   - **Strong Community Support**: A large community and extensive ecosystem of libraries and tools help developers find solutions and resources.
   - **SEO-Friendly**: Can be configured for server-side rendering, improving SEO for web applications.
 
-  ### Disadvantages
+  **Disadvantages**
+
   - **View Library**: React is a view library, not a full framework.
   - **Frequent Updates**: Rapid changes in the library may require developers to frequently update their knowledge and code.
   - **Boilerplate Code**: Sometimes requires more setup and boilerplate compared to other frameworks.
   - **Performance Issues**: If not optimized properly, excessive component re-renders can lead to performance bottlenecks.
+</details>
+
+#### 16. What is the purpose of the `key` prop in React, how does it benefit arrays of elements?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  The **"key"** prop in React is used to uniquely identify elements in a list or array of elements. It helps React efficiently manage and update the DOM by tracking which elements have changed, been added, or removed.
+
+  **Benefits of using the "key" prop:**
+  1. Efficient re-rendering.
+  2. Avoiding unnecessary updates.
+  3. Preventing bugs.
+
+  Typically, keys should be unique and stable, such as using item IDs rather than indices.
+</details>
+
+#### How to apply validation on `props` in React? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  You can apply validation on props using **PropTypes** or **TypeScript**.
+
+  **1. Using **PropTypes** (for JavaScript projects):**
+  React provides a package called `prop-types` to specify the types of props a component should receive. It’s simple and effective for basic validation.
+
+  Example:
+    ```jsx
+    import PropTypes from 'prop-types';
+
+    const MyComponent = ({ name, age }) => {
+      return (
+        <div>
+          <h1>Name: {name}</h1>
+          <p>Age: {age}</p>
+        </div>
+      );
+    };
+
+    MyComponent.propTypes = {
+      name: PropTypes.string.isRequired,  // Required string
+      age: PropTypes.number,              // Optional number
+    };
+
+    export default MyComponent;
+    ```
+
+  **2. Using **TypeScript** (for TypeScript projects):**
+  If you're working in a TypeScript project, you can apply prop validation more robustly by using TypeScript’s type system.
+
+  Example:
+
+    ```tsx
+    interface MyComponentProps {
+      name: string;          // Required string
+      age?: number;          // Optional number
+    }
+
+    const MyComponent: React.FC<MyComponentProps> = ({ name, age }) => {
+      return (
+        <div>
+          <h1>Name: {name}</h1>
+          <p>Age: {age}</p>
+        </div>
+      );
+    };
+
+    export default MyComponent;
+    ```
+
+  In TypeScript, using types or interfaces ensures strong validation at compile time, whereas `prop-types` provide runtime validation in JavaScript.
 </details>
 
 #### How can we find the version of React?
