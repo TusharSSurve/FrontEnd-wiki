@@ -8,6 +8,8 @@ import Head from "next/head";
 
 ---
 
+Closures are a crucial concept in JavaScript. This section highlights essential questions related to closures.
+
 #### 1. What are Closures? ⭐
 
 <details>
@@ -39,4 +41,85 @@ import Head from "next/head";
   - **Partial Application**: Creating functions with preset arguments.
   - **Event Handlers**: Maintaining state in asynchronous callbacks.
   - Can be used to implement **Memoization**
+</details>
+
+#### 2. What are some potential pitfalls of using closures?
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Here are brief potential pitfalls of using closures:
+
+  1. **Memory Leaks**: Closures may unintentionally retain references to variables, preventing garbage collection.  
+  2. **Overhead**: Excessive use can lead to increased memory usage and performance issues.  
+  3. **Debugging Complexity**: Identifying and resolving issues in closure-heavy code can be challenging.  
+  4. **Variable Sharing**: Closures capture references, not values, causing unexpected behavior in loops or asynchronous code.  
+</details>
+
+#### 3. What is memoization? ⭐
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  **Memoization** is an optimization technique that stores the results of expensive function calls and returns the cached result when the same inputs occur again.
+
+  Example:
+
+  ```javascript
+  function memoizedMultiply() {
+    const cache = {}; // Cache stored in closure
+    return function (a, b) {
+      const key = `${a},${b}`;
+      if (key in cache) return cache[key]; // Return cached result
+      cache[key] = a * b;
+      return cache[key];
+    };
+  }
+
+  const multiply = memoizedMultiply();
+
+  console.log(multiply(5, 10)); // 50 (calculated)
+  console.log(multiply(5, 10)); // 50 (cache)
+  ```
+
+  The `cache` is preserved in the closure, ensuring it persists across function calls.
+</details>
+
+#### 4. What is the difference between a closure and a higher-order function? 
+
+<details>
+  <summary>
+    <strong>Answer</strong>
+  </summary>
+  Here’s a detailed comparison:
+
+  - **Closure**: A function that "remembers" its surrounding scope even after the outer function has executed.
+
+    ```javascript
+    function outer() {
+      let count = 0;
+      return function inner() {
+        count++;
+        return count;
+      };
+    }
+    const closureExample = outer();
+    console.log(closureExample()); // 1
+    ```
+
+  - **Higher-Order Function**: A function that takes another function as an argument or returns a function.
+
+    ```javascript
+    function higherOrder(fn) {
+      return function (x) {
+        return fn(x) + 1;
+      };
+    }
+    const hofExample = higherOrder((num) => num * 2);
+    console.log(hofExample(3)); // 7
+    ``` 
+
+  **Key Difference**: Closures deal with retaining state, while higher-order functions focus on passing or returning functions.  
 </details>
